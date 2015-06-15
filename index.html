@@ -53,6 +53,17 @@ html, body {
   margin: 20px;
 }
 
+.item:hover:after {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,.5);
+}
+
 @-webkit-keyframes butterfly {
   0%, 5% {
     -webkit-transform: scale3d(1, 1, 1);
