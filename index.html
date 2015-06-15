@@ -34,23 +34,18 @@ html, body {
   text-align: center;
 }
 
-.container a {
-  display: inline-block;
-  text-decoration: none;
-}
-
 .item {
-  display: block;
+  display: inline-block;
+  position: relative;
   height: 150px;
   width: 150px;
   max-width: 100%;
+  margin: 20px;
   border-radius: 50%;
   box-shadow: 0 0 50px black, 0 0 50px black, 0 0 50px white;
   background-size: cover;
-  -webkit-animation: games 2s ease-in-out infinite alternate;
-  animation: games 2s ease-in-out infinite alternate;
+  text-decoration: none;
   cursor: pointer;
-  margin: 20px;
 }
 
 .item:hover:after {
@@ -302,6 +297,56 @@ html, body {
   animation: in-shape 1.5s ease-in infinite;
 }
 
+@-webkit-keyframes kids {
+  0% {
+    -webkit-transform: rotateX(-45deg);
+    transform: rotateX(-45deg);
+  }
+  40%, 60% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(45deg);
+    transform: rotateX(45deg);
+  }
+}
+
+@keyframes kids {
+  0% {
+    -webkit-transform: rotateX(-45deg);
+    transform: rotateX(-45deg);
+  }
+  40%, 60% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(45deg);
+    transform: rotateX(45deg);
+  }
+}
+.kids {
+  background-image: url('images/kids.png');
+  -webkit-animation: kids 1s ease-in-out infinite alternate;
+  animation: kids 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes codegenerator {
+  0%, 40% { opacity: 1; filter: alpha(opacity=100) }
+  100% { opacity: 0; filter: alpha(opacity=0) }
+}
+
+@keyframes codegenerator {
+  0%, 40% { opacity: 1; filter: alpha(opacity=100) }
+  100% { opacity: 0; filter: alpha(opacity=0) }
+}
+.codegenerator {
+  background-image: url('images/codegenerator.png');
+  -webkit-animation: codegenerator 1s ease-in-out infinite alternate;
+  animation: codegenerator 1s ease-in-out infinite alternate;
+}
+
 /* Laptops & Desktop */
 @media only screen and (min-width: 1224px) {
   .container {
@@ -323,6 +368,8 @@ html, body {
   <a href="http://xming13.github.io/experiment/christmas-tree" target="_blank" class="item snowman"></a>
   <a href="http://xming13.github.io/experiment/cny" target="_blank" class="item cny"></a>
   <a href="http://xming13.github.io/butterflies" target="_blank" class="item butterfly"></a>
+  <a href="http://xming13.github.io/things-kids-say" target="_blank" class="item kids"></a>
+  <a href="http://xming13.github.io/drupal-codegenerator" target="_blank" class="item codegenerator"></a>
 </div>
 </body>
 </html>
