@@ -31,14 +31,24 @@ $(function () {
     //console.log('windowWidth', windowWidth);
     //console.log('$(window).innerWidth', $(window).innerWidth());
 
-
     $('.grid .item').css({
       width: width,
       height: height
     });
-    $('.grid .img-wrapper').css({
-      height: height
-    });
+
+    if (!hasInitializedOnce) {
+      $grid = $grid.isotope({
+        itemSelector: '.grid-item',
+        filter: selectedFilter
+      });
+
+      hasInitializedOnce = true;
+
+      // layout Isotope after each image loads
+      $grid.imagesLoaded().progress(function () {
+        $grid.isotope('layout');
+      });
+    }
 
     // check if window width is still the same
     // after changing grid item's width and height, the appearance of
@@ -50,22 +60,9 @@ $(function () {
       width: isGalleryMode ? 'auto' : GRID_SIZE * newNumColumn + 'px'
     });
 
-    if (!hasInitializedOnce) {
-      // init Isotope
-      $grid = $grid.isotope({
-        // options
-        itemSelector: '.grid-item',
-        filter: selectedFilter
-        //masonry: {
-        //  columnWidth: 0
-        //}
-      });
-      hasInitializedOnce = true;
-    }
-
     setTimeout(function () {
       $grid.isotope({filter: selectedFilter});
-    }, 200)
+    }, 100);
   }
 
   window.addEventListener('resize', onResize);
