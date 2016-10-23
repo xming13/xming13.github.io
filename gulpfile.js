@@ -83,7 +83,13 @@ gulp.task('images', function () {
 gulp.task('html', function () {
   return gulp.src(config.html.src)
     .pipe(preprocess({context: {ENVIRONMENT: isProd ? 'prod' : 'dev'}}))
-    .pipe(handlebars(data))
+    .pipe(handlebars(data, {
+      helpers: {
+        replaceAll: function (string, search, replacement) {
+          return string.split(search).join(replacement);
+        }
+      }
+    }))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(config.html.dest));
 });
@@ -91,7 +97,7 @@ gulp.task('html', function () {
 // Build assets
 gulp.task('build:assets', ['js', 'css', 'images']);
 
-gulp.task('clean', function() {
+gulp.task('clean', function () {
   return gulp.src(config.destPaths, {read: false})
     .pipe(clean());
 });
@@ -103,7 +109,7 @@ gulp.task('clean', function() {
 //});
 
 // Production build
-gulp.task('build', function() {
+gulp.task('build', function () {
   isProd = true;
   config = configProd;
 
@@ -112,7 +118,7 @@ gulp.task('build', function() {
 
 // Static Server + Watch
 gulp.task('serve', function () {
-  runSequence('clean', 'build:assets', 'html', function() {
+  runSequence('clean', 'build:assets', 'html', function () {
     browserSync.init({
       proxy: configDev.browserSyncProxy
     });
