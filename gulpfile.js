@@ -1,6 +1,7 @@
 // Include gulp.
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
+var data = require('./src/data.json');
 var configDev = require('./config.json');
 var configProd = require('./config.prod.json');
 
@@ -23,6 +24,7 @@ var gulpif = require('gulp-if');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 var htmlmin = require('gulp-htmlmin');
+var handlebars = require('gulp-compile-handlebars');
 
 // default to dev config
 var isProd = false;
@@ -81,6 +83,7 @@ gulp.task('images', function () {
 gulp.task('html', function () {
   return gulp.src(config.html.src)
     .pipe(preprocess({context: {ENVIRONMENT: isProd ? 'prod' : 'dev'}}))
+    .pipe(handlebars(data))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(config.html.dest));
 });

@@ -48,9 +48,7 @@
   <div class="filter" data-filter=".android">Android</div>
 </div>
 
-<div class="container grid full"></div>
-
-<script id="grid-item-template" type="text/x-handlebars-template">
+<div class="container grid full">
   {{#each items}}
   <div class="grid-item {{#each tags}}{{this}} {{/each}}">
     <a href="{{url}}" target="_blank" class="item ">
@@ -67,7 +65,7 @@
     </a>
   </div>
   {{/each}}
-</script>
+</div>
 
 <!-- @if ENVIRONMENT='dev' -->
 <script src="vendor/js/handlebars-v4.0.5.js"></script>
@@ -77,9 +75,12 @@
 <!-- @endif -->
 
 <!-- @if ENVIRONMENT='prod' -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.min.js"></script>
 <script src="js/app.min.js"></script>
 <!-- @endif -->
 </body>
