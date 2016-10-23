@@ -1,0 +1,37 @@
+{
+  "name": "xming13",
+  "description": "",
+  "browserSyncProxy": "http://0.0.0.0:8000/app",
+  "css": {
+    "src": [
+      "src/scss/**/*.scss"
+    ],
+    "dest": "app/css",
+    "includePaths": [
+    ]
+  },
+  "js": {
+    "src": [
+      "src/js/**/*.js"
+    ],
+    "dest": "app/js"
+  },
+  "images": {
+    "src": [
+      "src/images/*"
+    ],
+    "dest": "app/images"
+  },
+  "html": {
+    "src": [
+      "src/index.html"
+    ],
+    "dest": "app"
+  },
+  "destPaths": [
+    "app/css/*",
+    "app/js/*",
+    "app/images/*",
+    "app/index.html"
+  ]
+}

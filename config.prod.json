@@ -1,0 +1,36 @@
+{
+  "name": "xming13",
+  "description": "",
+  "css": {
+    "src": [
+      "src/scss/**/*.scss"
+    ],
+    "dest": "css",
+    "includePaths": [
+    ]
+  },
+  "js": {
+    "src": [
+      "src/js/**/*.js"
+    ],
+    "dest": "js"
+  },
+  "images": {
+    "src": [
+      "src/images/*"
+    ],
+    "dest": "images"
+  },
+  "html": {
+    "src": [
+      "src/index.html"
+    ],
+    "dest": ""
+  },
+  "destPaths": [
+    "css/*",
+    "js/*",
+    "images/*",
+    "index.html"
+  ]
+}
