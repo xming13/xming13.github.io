@@ -81,7 +81,7 @@ gulp.task('images', function () {
 gulp.task('html', function () {
   return gulp.src(config.html.src)
     .pipe(preprocess({context: {ENVIRONMENT: isProd ? 'prod' : 'dev'}}))
-    .pipe(gulpif(isProd, htmlmin({collapseWhitespace: true})))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(config.html.dest));
 });
 
