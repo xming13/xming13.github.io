@@ -59,7 +59,7 @@
         <div class="name">{{name}}</div>
         <div class="date">{{date}}</div>
         <div class="tags">
-          {{#each tags}}<span>{{this}}</span>{{/each}}
+          {{#each tags}}<span>{{replaceAll this "-" " "}}</span>{{/each}}
         </div>
       </div>
     </a>
