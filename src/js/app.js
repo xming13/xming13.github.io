@@ -25,6 +25,13 @@ $(function () {
     var width = (isGalleryMode ? windowWidth / numColumns : GRID_SIZE - 10) + 'px';
     var height = isGalleryMode ? width : 'auto';
 
+    //console.log('width', width);
+    //console.log('height', height);
+    //console.log('numColumns', numColumns);
+    //console.log('windowWidth', windowWidth);
+    //console.log('$(window).innerWidth', $(window).innerWidth());
+
+
     $('.grid .item').css({
       width: width,
       height: height
@@ -32,24 +39,6 @@ $(function () {
     $('.grid .img-wrapper').css({
       height: height
     });
-
-    //console.log('width', width);
-    //console.log('height', height);
-    //console.log('numColumns', numColumns);
-    //console.log('windowWidth', windowWidth);
-    //console.log('$(window).innerWidth', $(window).innerWidth());
-
-    if (!hasInitializedOnce) {
-      // init Isotope
-      $grid.isotope({
-        // options
-        itemSelector: '.grid-item',
-        masonry: {
-          columnWidth: 0
-        }
-      });
-      hasInitializedOnce = true;
-    }
 
     // check if window width is still the same
     // after changing grid item's width and height, the appearance of
@@ -61,9 +50,22 @@ $(function () {
       width: isGalleryMode ? 'auto' : GRID_SIZE * newNumColumn + 'px'
     });
 
+    if (!hasInitializedOnce) {
+      // init Isotope
+      $grid = $grid.isotope({
+        // options
+        itemSelector: '.grid-item',
+        filter: selectedFilter
+        //masonry: {
+        //  columnWidth: 0
+        //}
+      });
+      hasInitializedOnce = true;
+    }
+
     setTimeout(function () {
       $grid.isotope({filter: selectedFilter});
-    }, 400)
+    }, 200)
   }
 
   window.addEventListener('resize', onResize);
