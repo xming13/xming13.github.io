@@ -51,17 +51,17 @@ $(function () {
       hasInitializedOnce = true;
     }
 
-    setTimeout(function () {
-      // check if window width is still the same
-      // after changing grid item's width and height, the appearance of
-      // scrollbar might change the window width if so, we will use column-1 to
-      // calculate the grid size instead.
-      var newNumColumn = windowWidth <= $(window).innerWidth() ? numColumns : numColumns - 1;
-      $grid.css({
-        'margin-top': $('.filter-container').innerHeight() + 'px',
-        width: isGalleryMode ? 'auto' : GRID_SIZE * newNumColumn + 'px'
-      });
+    // check if window width is still the same
+    // after changing grid item's width and height, the appearance of
+    // scrollbar might change the window width if so, we will use column-1 to
+    // calculate the grid size instead.
+    var newNumColumn = windowWidth <= $(window).innerWidth() ? numColumns : numColumns - 1;
+    $grid.css({
+      'margin-top': $('.filter-container').innerHeight() + 'px',
+      width: isGalleryMode ? 'auto' : GRID_SIZE * newNumColumn + 'px'
+    });
 
+    setTimeout(function () {
       $grid.isotope({filter: selectedFilter});
     }, 400)
   }
