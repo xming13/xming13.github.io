@@ -29,6 +29,9 @@ $(function () {
       width: width,
       height: height
     });
+    $('.grid .img-wrapper').css({
+      height: height
+    });
 
     //console.log('width', width);
     //console.log('height', height);
