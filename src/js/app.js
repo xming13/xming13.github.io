@@ -30,28 +30,29 @@ $(function () {
       height: height
     });
 
-      //console.log('width', width);
-      //console.log('height', height);
-      //console.log('numColumns', numColumns);
-      //console.log('windowWidth', windowWidth);
-      //console.log('$(window).innerWidth', $(window).innerWidth());
+    //console.log('width', width);
+    //console.log('height', height);
+    //console.log('numColumns', numColumns);
+    //console.log('windowWidth', windowWidth);
+    //console.log('$(window).innerWidth', $(window).innerWidth());
+
+    if (!hasInitializedOnce) {
+      // init Isotope
+      $grid.isotope({
+        // options
+        itemSelector: '.grid-item',
+        masonry: {
+          columnWidth: 0
+        }
+      });
+      hasInitializedOnce = true;
+    }
 
     setTimeout(function () {
-      if (!hasInitializedOnce) {
-        // init Isotope
-        $grid.isotope({
-          // options
-          itemSelector: '.grid-item',
-          masonry: {
-            columnWidth: 0
-          }
-        });
-        hasInitializedOnce = true;
-      }
-
       // check if window width is still the same
-      // after changing grid item's width and height, the appearance of scrollbar might change the window width
-      // if so, we will use column-1 to calculate the grid size instead.
+      // after changing grid item's width and height, the appearance of
+      // scrollbar might change the window width if so, we will use column-1 to
+      // calculate the grid size instead.
       var newNumColumn = windowWidth <= $(window).innerWidth() ? numColumns : numColumns - 1;
       $grid.css({
         'margin-top': $('.filter-container').innerHeight() + 'px',
@@ -59,7 +60,7 @@ $(function () {
       });
 
       $grid.isotope({filter: selectedFilter});
-    }, 200)
+    }, 400)
   }
 
   window.addEventListener('resize', onResize);
