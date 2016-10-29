@@ -45,7 +45,7 @@ $(function () {
       hasInitializedOnce = true;
 
       // layout Isotope after each image loads
-      $grid.imagesLoaded().progress(function () {
+      $grid.imagesLoaded(function () {
         $grid.isotope('layout');
       });
     }
